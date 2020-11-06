@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+
+    react_demo:
+        container_name: react-demo
+        hostname: react-demo
+        command: sh -c "chmod +x /app/run.sh && /app/run.sh"
+        networks:
+        - react_lan
+        build: 
+            context: .
+            dockerfile: './Dockerfile.react'
+        ports:
+        - "3000:3000"
+        volumes:
+        - "./app:/app"
+
+## NETWORK
+networks:
+    react_lan:
+      driver: bridge

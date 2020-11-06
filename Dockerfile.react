@@ -1,0 +1,20 @@
+FROM ubuntu:20.04
+
+ENV TZ=Asia/Colombo
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN apt-get update
+RUN apt-get upgrade -y
+
+RUN apt-get install -y apt-utils
+
+RUN apt-get install -y git-core
+
+RUN apt-get install -y nodejs
+RUN apt-get install -y npm
+
+RUN npm install -g npx
+
+WORKDIR /app
+
+EXPOSE 3000
